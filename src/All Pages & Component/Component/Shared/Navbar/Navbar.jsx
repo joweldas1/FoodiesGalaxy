@@ -31,9 +31,10 @@ const Navbar = () => {
     </>
 
     return (
-        <div className="navbar bg-lime-300 absolute z-20 mx-auto max-w-7xl ">
+
+        <div className="navbar bg-transparent absolute z-20 mx-auto max-w-7xl ">
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl">FoodiesGalaxy</a>
+          <h2 className=' text-2xl  text-white font-lato '>FoodiesGalaxy</h2>
         </div>
         {
               user?

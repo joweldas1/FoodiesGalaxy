@@ -5,6 +5,10 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily:{
+      "slab":`"Roboto Slab", serif`,
+      "lato":`"Lato", sans-serif`
+    },
     extend: {},
   },
   plugins: [require('daisyui'),],
