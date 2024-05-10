@@ -26,6 +26,7 @@ const Navbar = () => {
     const nav = 
     <>
     <li><NavLink to='/'>Home</NavLink></li>
+    <li><NavLink to='/ourService'>Cook Room</NavLink></li>
     <p className='text-center'>User : {userName}</p>
     <li><button onClick={handleLogOut} className="btn">Logout</button></li>
     </>

@@ -5,6 +5,7 @@ import Home from "./All Pages & Component/Pages/Home/Home";
 import Login from "./All Pages & Component/Pages/Login/Login";
 import Register from "./All Pages & Component/Pages/Register/Register";
 import PrivateRoute from "./All Pages & Component/Provider/PrivateRoute";
+import ResturantFoodUpload from "./All Pages & Component/Pages/ResturantFoodAdd/ResturantFoodUpload";
 
   const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ import PrivateRoute from "./All Pages & Component/Provider/PrivateRoute";
             {
                 path:'/register',
                 element:<Register/>
+            },
+            {
+                path:"/ourService",
+                element:<ResturantFoodUpload/>
             }
         ]
     }
