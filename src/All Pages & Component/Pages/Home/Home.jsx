@@ -1,15 +1,16 @@
 import { Helmet } from 'react-helmet-async';
 import Slider from '../../Component/Single/Slider/Slider';
-import UseAuth from '../../Hooks/UseAuth';
+import ResturantHomeShow from '../ResturantFoodAdd/ResturantHomeShow';
 
 const Home = () => {
     return (
         <div>
             <Helmet> <title> FoodiesGalaxy | Home </title> </Helmet>
             <Slider/>
-            <div className='h-48 w-28'>
-
+            <div className='my-10 mx-auto w-full'>
+            <ResturantHomeShow />
             </div>
+                    
 
         </div>
     );

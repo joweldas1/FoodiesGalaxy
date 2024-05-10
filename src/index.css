@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.tab{
+    border: 2px solid blue;
+    transition: 1s ease-in-out;
+}
+.tab:focus{
+    border: none;
+    border-bottom:2px solid blue;
+    
+}
+.imgD{
+    transition: 2s ease-in-out;
+    background-color: rgba(0,0,0,0.5);
+}
+.imgH:hover .imgD{
+    top: 0;
+}

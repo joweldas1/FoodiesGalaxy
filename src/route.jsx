@@ -6,6 +6,7 @@ import Login from "./All Pages & Component/Pages/Login/Login";
 import Register from "./All Pages & Component/Pages/Register/Register";
 import PrivateRoute from "./All Pages & Component/Provider/PrivateRoute";
 import ResturantFoodUpload from "./All Pages & Component/Pages/ResturantFoodAdd/ResturantFoodUpload";
+import SingleFoodDetails from "./All Pages & Component/Pages/ResturantFoodAdd/SingleFoodDetails";
 
   const router = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ import ResturantFoodUpload from "./All Pages & Component/Pages/ResturantFoodAdd/
             {
                 path:"/ourService",
                 element:<ResturantFoodUpload/>
+            },
+            {
+                path:"/food-details/:id",
+                element:<SingleFoodDetails/>
             }
         ]
     }

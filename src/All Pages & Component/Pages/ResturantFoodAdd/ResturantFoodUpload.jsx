@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form"
+import axios from 'axios';
+import toast from 'react-hot-toast';
+
 
 
 const ResturantFoodUpload = () => {
@@ -11,14 +14,26 @@ const ResturantFoodUpload = () => {
         formState: { errors },
       } = useForm()
 
-      const onSubmit = (data) => {
-        const submit = {...data,
-            category:selectCategory
-        }
+      const onSubmit = async(data) => {
+        const submit = {...data,category:selectCategory}
+        console.log(submit)
+        await axios.post(`${import.meta.env.VITE_API_URL}/todays-meal`,submit)
+        .then(res=>{
+        if(res.status===200){
+                toast.success("Post done")
+        }})
+        .catch(error=>console.log(error))
+     
+    }
 
 
-        
-        console.log(submit)}
+
+
+
+
+
+
+
     
     console.log(selectCategory);
     return (
@@ -55,12 +70,16 @@ const ResturantFoodUpload = () => {
 
                 <div>
                     <label className="text-gray-700 dark:text-gray-200" >Made By</label>
-                    <input {...register("madBy")} id="madBy" type="text" name='madeBy' className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                    <input {...register("madeBy")} id="madeBy" type="text" name='madeBy' className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                 </div>
 
                 <div>
                     <label className="text-gray-700 dark:text-gray-200" >Food Origin</label>
                     <input {...register("origin")} id="origin" type="text" name='origin' className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                </div>
+                <div>
+                    <label className="text-gray-700 dark:text-gray-200" >Ingredients</label>
+                    <input {...register("ingredients")} id="origin" type="text" name='ingredients' className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                 </div>
 
                 <div>

@@ -10,7 +10,6 @@ const Navbar = () => {
   const userName = user?.displayName;
   const userImage = user?.photoURL;
 
-  console.log(userName,userImage);
   const handleLogOut = ()=>{
     logOut()
     .then(() => {
@@ -31,7 +30,6 @@ const Navbar = () => {
     <li><button onClick={handleLogOut} className="btn">Logout</button></li>
     </>
 
-    console.log(user);
     return (
         <div className="navbar bg-lime-300 absolute z-20 mx-auto max-w-7xl ">
         <div className="flex-1">
