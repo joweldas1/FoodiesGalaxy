@@ -10,6 +10,7 @@ import SingleFoodDetails from "./All Pages & Component/Pages/ResturantFoodAdd/Si
 import AllOrdered from "./All Pages & Component/Pages/AllOrdered/AllOrdered";
 import SingleCustomerOrder from "./All Pages & Component/Pages/SingleCustomerOrder/SingleCustomerOrder";
 import CustomerUpdatePurchaseQty from "./All Pages & Component/Pages/CustomerUpdatePurchaseQty/CustomerUpdatePurchaseQty";
+import AllItems from "./All Pages & Component/Pages/AllItems/AllItems";
 
   const router = createBrowserRouter([
     {
@@ -48,6 +49,14 @@ import CustomerUpdatePurchaseQty from "./All Pages & Component/Pages/CustomerUpd
             {
                 path:"/updateQty/:id",
                 element:<CustomerUpdatePurchaseQty/>                
+            },
+            {
+                path:"/all-items",
+                element:<AllItems/>
+            },
+            {
+                path:"/foodTours",
+                element:''
             }
         ]
     }

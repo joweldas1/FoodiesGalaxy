@@ -20,7 +20,6 @@ const SingleFoodDetails = () => {
     const {user}= UseAuth()
 
     const {foodImage,foodName,price,category} = singleData;
-    console.log(singleData);
     const prices = parseFloat(price)
     const quantity = parseFloat(qty)
 
@@ -35,6 +34,16 @@ const SingleFoodDetails = () => {
         .then(res=> setSingleData(res.data))
         .catch(err=>console.log(err))
     },[id])
+    
+    const countOrder=async()=>{
+        const prevCount = singleData.totalSell
+        const totalCount = prevCount + quantity
+
+      
+
+        const res = await axios.post(`${import.meta.env.VITE_API_URL}/updatePurchase/${id}`,{totalSell:totalCount})
+        console.log('res--',res);
+    }
 
 
     const handlePlaceOrder = async () =>{
@@ -54,8 +63,10 @@ const SingleFoodDetails = () => {
         const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/customer-ordered`,orderedData)
         if(data.acknowledged===true){
         toast.success("Order posted done,Please check order section")
+        countOrder()
         return navigate("/")
         }
+       
     }
 
     
@@ -79,12 +90,14 @@ const SingleFoodDetails = () => {
             <p className='py-2 f font-lato font-medium'>{singleData?.description}</p>    
             <p><span className='text-lg font-bold font-lato'>Country</span> : {singleData?.origin}</p>
             <p><span className='text-lg font-bold font-lato'>Ingredient : </span>{singleData?.ingredients}</p>
-            <p className='font-bold'><span className='text-lg font-bold font-lato'>Price : </span>{singleData?.price}/-</p>
+               
+            <p className='font-bold'><span className='text-lg font-bold font-lato'>Total sell : </span >{singleData?.totalSell} Pcs</p>
+            <p className='font-bold'><span className='text-lg font-bold font-lato'>Price : </span >{singleData?.price}/-</p>
             <div className='flex  mb-5'>
             <p className='text-lg font-bold font-lato'>Quantity : </p> <input onChange={e=>setQty(e.target.value)} className=' border hover:border-2 border-blue-800 rounded-md ml-3 w-11 ' name='quantity'  type="number" required />
             </div>
             <button className='btn btn-primary' onClick={handlePlaceOrder} >Place Order</button>
-        </div>
+        </div>  
       </div>
       </>
     );

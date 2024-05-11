@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 const SingleCustomerDataShow = ({ data , idx}) => {
     const {foodName,prices,quantity,startDate,status,_id} = data
-  console.log(_id);
+
+
   return (
     <tr className="text-base">
     <th>{idx+1}</th>

@@ -6,7 +6,7 @@
 
 
 .tab{
-    border: 2px solid blue;
+    outline: 2px solid blue;
 }
 .tab:focus{
     border-top:2px white;
@@ -16,9 +16,28 @@
     
 }
 .imgD{
-    transition: 2s ease-in-out;
+    transition: .5s ease-in-out;
     background-color: rgba(0,0,0,0.5);
 }
 .imgH:hover .imgD{
     top: 0;
 }
+#nav {
+    transition: opacity 0.6s ease, top 0.5s linear ease-in-out; /* Combine transition properties */
+  }
+  
+  .hiddenNav {
+   display: none;
+
+  }
+  
+  .navCss {
+    /* opacity: 1; 
+    background-color: blue;
+    opacity: 10;
+    z-index: 80;
+    top: 0;
+    transition: opacity 0.6s ease, top 0.5s linear ease-in-out;  */
+  }
+  
+  

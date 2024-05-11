@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import ResturantCard from './ResturantCard';
 import HeadingAndTitle from '../../Component/Shared/HeadingAndTitle/HeadingAndTitle';
+import { Link } from 'react-router-dom';
 
 
 const ResturantHomeShow = () => {
@@ -20,7 +21,6 @@ const ResturantHomeShow = () => {
 
 
 
-    console.log(homeData);
    
 
     return (
@@ -37,23 +37,26 @@ const ResturantHomeShow = () => {
     <div className='my-5'>
               <TabPanel>
                   <div className=' grid mx-2 grid-cols-2 lg:grid-cols-4 justify-center items-center gap-5'>
-                  {homeData?.filter(f=>f.category === "breakfast").map((d,idx)=>( <ResturantCard key={idx} d={d}></ResturantCard> ))}
+                  {homeData?.filter(f=>f.category === "breakfast").slice(0,8).map((d,idx)=>( <ResturantCard key={idx} d={d}></ResturantCard> ))}
                   </div>
               </TabPanel>
 
               <TabPanel>
                   <div className=' grid mx-2 grid-cols-2 lg:grid-cols-4 justify-center items-center gap-5'>
-                  {homeData?.filter(f=>f.category === "lunch").map((d,idx)=>( <ResturantCard key={idx} d={d}></ResturantCard> ))}
+                  {homeData?.filter(f=>f.category === "lunch").slice(0,8).map((d,idx)=>( <ResturantCard key={idx} d={d}></ResturantCard> ))}
                   </div>
               </TabPanel>
 
               <TabPanel>
                   <div className=' grid mx-2 grid-cols-2 lg:grid-cols-4 justify-center items-center gap-5'>
-                  {homeData?.filter(f=>f.category === "dinner").map((d,idx)=>( <ResturantCard key={idx} d={d}></ResturantCard> ))}
+                  {homeData?.filter(f=>f.category === "dinner").slice(0,8).map((d,idx)=>( <ResturantCard key={idx} d={d}></ResturantCard> ))}
                   </div>
               </TabPanel>
     </div>
   </Tabs>
+  <div className='text-center'>
+    <button className='btn btn-sm bg-lime-700 text-white'> <Link to="/all-items">All Items</Link> </button>
+  </div>
         </div>
     );
 };
