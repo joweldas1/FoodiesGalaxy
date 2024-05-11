@@ -8,6 +8,8 @@ import PrivateRoute from "./All Pages & Component/Provider/PrivateRoute";
 import ResturantFoodUpload from "./All Pages & Component/Pages/ResturantFoodAdd/ResturantFoodUpload";
 import SingleFoodDetails from "./All Pages & Component/Pages/ResturantFoodAdd/SingleFoodDetails";
 import AllOrdered from "./All Pages & Component/Pages/AllOrdered/AllOrdered";
+import SingleCustomerOrder from "./All Pages & Component/Pages/SingleCustomerOrder/SingleCustomerOrder";
+import CustomerUpdatePurchaseQty from "./All Pages & Component/Pages/CustomerUpdatePurchaseQty/CustomerUpdatePurchaseQty";
 
   const router = createBrowserRouter([
     {
@@ -38,6 +40,14 @@ import AllOrdered from "./All Pages & Component/Pages/AllOrdered/AllOrdered";
             {
                 path:"/food-details/:id",
                 element:<SingleFoodDetails/>
+            },
+            {
+                path:"/myOrder",
+                element:<SingleCustomerOrder/>
+            },
+            {
+                path:"/updateQty/:id",
+                element:<CustomerUpdatePurchaseQty/>                
             }
         ]
     }

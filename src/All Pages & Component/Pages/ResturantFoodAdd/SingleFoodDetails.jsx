@@ -19,7 +19,8 @@ const SingleFoodDetails = () => {
     const {id } = useParams()
     const {user}= UseAuth()
 
-    const {foodImage,foodName,price} = singleData;
+    const {foodImage,foodName,price,category} = singleData;
+    console.log(singleData);
     const prices = parseFloat(price)
     const quantity = parseFloat(qty)
 
@@ -46,6 +47,7 @@ const SingleFoodDetails = () => {
             prices,
             quantity,
             startDate,
+            category,
             status :'pending',  
         }
        

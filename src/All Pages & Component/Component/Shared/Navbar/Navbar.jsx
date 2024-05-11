@@ -25,6 +25,7 @@ return toast.success("Logout Done")
     const nav = 
     <>
     <li><NavLink to='/'>Home</NavLink></li>
+    <li><NavLink to='/myOrder'>My Order</NavLink></li>
     <li><NavLink to='/ourService'>Cook Room</NavLink></li>
     <li><NavLink to='/allOrdered'>Order Collection</NavLink></li>
     <p className='text-center'>User : {userName}</p>

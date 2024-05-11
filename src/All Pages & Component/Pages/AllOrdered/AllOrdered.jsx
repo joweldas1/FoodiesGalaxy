@@ -1,8 +1,8 @@
-import axios from 'axios';
+import axios, { all } from 'axios';
 import React, { useEffect, useState } from 'react';
 
 const AllOrdered = () => {
-    const [allOrder,setAllOrder] = useState("")
+    const [allOrder,setAllOrder] = useState([])
 
     useEffect(()=>{
         axios.get(`${import.meta.env.VITE_API_URL}/ordered`)
@@ -17,12 +17,13 @@ const AllOrdered = () => {
     return (
         <div className='pt-16'>
 
-<div className="overflow-x-auto">
-  <table className="table">
+<div className="overflow-x-auto ">
+  <table className="table whitespace-nowrap text-center ">
     {/* head */}
-    <thead>
+    <thead className='font-lato font-semibold text-sm'>
       <tr className=''>
-        <th></th>
+        <th>SL</th>
+        <th>Ordered Date & Time</th>
         <th>Customer Name</th>
         <th>Ordered Item</th>
         <th>Price</th>
@@ -33,18 +34,25 @@ const AllOrdered = () => {
     </thead>
     <tbody>
       {/* row 1 */}
-      <tr>
+      {
+        allOrder?.map((p,idx)=>(
+            <tr key={idx}>
         <th>1</th>
-        <td>Cy Ganderton</td>
-        <td>Quality Control Specialist</td>
-        <td>Blue</td>
-        <td>Blue</td>
-        <td>Blue</td>
+        <td>{new Date(p.startDate).toLocaleString()}</td>
+        <td>{p.displayName}</td>
+        <td>{p.foodName}</td>
+        <td>{p.prices}</td>
+        <td>{p.quantity}</td>
+        <td>{p.prices * p.quantity} </td>
         <td className='space-x-10'> 
         <button className='bg-red-500 text-white p-1 rounded-lg'>Cancel</button> 
-        <button>Confirmed</button>  </td>
+        <button className='bg-lime-500 text-white p-1 rounded-lg'>Cooking</button> 
+        <button className='bg-blue-500 text-white p-1 rounded-lg'>Confirmed</button>  </td>
       </tr>
+        ))
+      }
 
+     
 
     </tbody>
   </table>
