@@ -7,10 +7,11 @@
 
 .tab{
     border: 2px solid blue;
-    transition: 1s ease-in-out;
 }
 .tab:focus{
-    border: none;
+    border-top:2px white;
+    border-left: 2px white;
+    border-right: 2px white;;
     border-bottom:2px solid blue;
     
 }

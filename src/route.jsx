@@ -7,6 +7,7 @@ import Register from "./All Pages & Component/Pages/Register/Register";
 import PrivateRoute from "./All Pages & Component/Provider/PrivateRoute";
 import ResturantFoodUpload from "./All Pages & Component/Pages/ResturantFoodAdd/ResturantFoodUpload";
 import SingleFoodDetails from "./All Pages & Component/Pages/ResturantFoodAdd/SingleFoodDetails";
+import AllOrdered from "./All Pages & Component/Pages/AllOrdered/AllOrdered";
 
   const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ import SingleFoodDetails from "./All Pages & Component/Pages/ResturantFoodAdd/Si
             {
                 path:"/ourService",
                 element:<ResturantFoodUpload/>
+            },
+            {
+                path:"/allOrdered",
+                element:<AllOrdered/>,
             },
             {
                 path:"/food-details/:id",

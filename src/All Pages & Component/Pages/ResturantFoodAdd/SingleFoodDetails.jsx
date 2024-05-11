@@ -45,8 +45,8 @@ const SingleFoodDetails = () => {
             foodName,
             prices,
             quantity,
-            startDate
-            
+            startDate,
+            status :'pending',  
         }
        
         const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/customer-ordered`,orderedData)
@@ -61,6 +61,7 @@ const SingleFoodDetails = () => {
     return (
         <>
         <Helmet><title>FoodiesGalaxy | Details</title></Helmet>
+        
         <div className="card lg:card-side bg-base-100 shadow-xl pt-16">
     
       <img src={singleData?.foodImage} alt="Album" className='lg:w-1/2'/>

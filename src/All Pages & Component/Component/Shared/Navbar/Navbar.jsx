@@ -4,28 +4,29 @@ import UseAuth from '../../../Hooks/UseAuth';
 import toast from 'react-hot-toast';
 
 const Navbar = () => {
-  const {user,setUser} = UseAuth()
-  const {logOut} = UseAuth()
+const {user,setUser} = UseAuth()
+const {logOut} = UseAuth()
 
-  const userName = user?.displayName;
-  const userImage = user?.photoURL;
+const userName = user?.displayName;
+const userImage = user?.photoURL;
 
-  const handleLogOut = ()=>{
-    logOut()
-    .then(() => {
-    setUser(null)
-    return toast.success("Logout Done")
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  }
+const handleLogOut = ()=>{
+logOut()
+.then(() => {
+setUser(null) 
+return toast.success("Logout Done")
+})
+.catch((err) => {
+  console.log(err);
+});
+}
 
 
     const nav = 
     <>
     <li><NavLink to='/'>Home</NavLink></li>
     <li><NavLink to='/ourService'>Cook Room</NavLink></li>
+    <li><NavLink to='/allOrdered'>Order Collection</NavLink></li>
     <p className='text-center'>User : {userName}</p>
     <li><button onClick={handleLogOut} className="btn">Logout</button></li>
     </>

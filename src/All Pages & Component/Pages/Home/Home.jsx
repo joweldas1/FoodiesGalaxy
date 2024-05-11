@@ -7,7 +7,7 @@ const Home = () => {
         <div>
             <Helmet> <title> FoodiesGalaxy | Home </title> </Helmet>
             <Slider/>
-            <div className='my-10 mx-auto w-full'>
+            <div className='my-20 mx-auto w-full'>
             <ResturantHomeShow />
             </div>
                     
