@@ -8,7 +8,11 @@ const SingleCustomerOrder = () => {
     const [singleCustomerOrder , SetSingleCustomerOrder] = useState([])
     const {user} = UseAuth()
     const email = user?.email;
-    const customerName = user?.displayName
+    const customerName = user?.displayName;
+    console.log(singleCustomerOrder);
+
+    const filtered = singleCustomerOrder.some(item=>item.status==="pending")
+    console.log(filtered);
 
     useEffect(()=>{
         getData()
@@ -38,6 +42,7 @@ const SingleCustomerOrder = () => {
         })
         .catch(err=>console.log(err))
     }
+
 
     
 
@@ -91,7 +96,7 @@ const SingleCustomerOrder = () => {
                    <h1>Total Price : <span>{totalPrice} /-</span> </h1>
                    <h1>Total Quantity : <span>{totalQuantity}</span> </h1>
                    <button className='btn btn-sm mt-3'>Payment</button> <br />
-                   <button onClick={clearAllOrder} className='btn btn-sm mt-3'>Clear Your Cart</button>
+                   <button onClick={clearAllOrder} className={`btn btn-sm mt-3`} >Clear Your Cart</button>
                    </div>
                 </div>
                 </div>
