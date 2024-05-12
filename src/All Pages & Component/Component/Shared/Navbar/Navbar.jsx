@@ -35,14 +35,7 @@ const Navbar = () => {
       if(window.scrollY>50){
         nav.classList.add('hiddenNav')
       }else nav.classList.remove("hiddenNav")
-      // if(window.scrollY>600){
-      //   nav.classList.remove('hiddenNav')
-      //   nav.classList.add("navCss")
-      // }
-      
-    //  if (window.scrollY === 20) { // Adjust the threshold as needed
-    //     nav.classList.remove("hiddenNav", "navCss");
-    //   }       
+         
     })
 
     },10))
@@ -50,8 +43,8 @@ const Navbar = () => {
 
     const nav = 
     <>
-    <li><NavLink to='/'>Home</NavLink></li>
     <li><NavLink to='/myOrder'>My Order</NavLink></li>
+    <li><NavLink to='/user-post'>Create Post</NavLink></li>
     <li className='lg:hidden'> <NavLink to='/all-items'> All Items </NavLink> </li>
     <li className='lg:hidden'> <NavLink to='/foodTours'> Foodies Tour </NavLink> </li>
     <li><NavLink to='/ourService'>Cook Room</NavLink></li>
@@ -61,19 +54,20 @@ const Navbar = () => {
     </>
 
     const navTwo = <>
-    <ul className='text-orange-600 lg:flex space-x-10 mr-5 z-40  hidden   '>
-      <li> <NavLink to='/all-items'> All Items </NavLink> </li>
-      <li> <NavLink to='/foodTours'> Foodies Tour </NavLink> </li>
+    <ul className=' flex  space-x-3 text-[11px] lg:text-base lg:space-x-10 mr-5 z-40 font-bold  '>
+      <li><NavLink className="navText " to='/'>Home</NavLink></li>
+      <li> <NavLink className="navText" to='/all-items'> All Items </NavLink> </li>
+      <li> <NavLink className="navText" to='/foodTours'> Foodies Tour </NavLink> </li>
     </ul>
     </>
 
     return (
 
-        <div id='nav' className="navbar text-lato text-orange-600 font-semibold fixed bg-transparent z-30 mx-auto max-w-7xl ">
+        <div id='nav' className="navbar text-lato  orangeGlossy font-semibold fixed bg-transparent z-30 mx-auto max-w-7xl ">
         <div className="flex-1">
-          <h2 className=' text-2xl  font-lato '>FoodiesGalaxy</h2>
+          <h2 className=' text-lg lg:text-3xl  font-lato '>FoodiesGalaxy</h2>
         </div>
-        <div>
+        <div className=''>
           {navTwo}
         </div>
         {
@@ -84,7 +78,7 @@ const Navbar = () => {
           <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <img alt="Tailwind CSS Navbar component" onClick={handleNav} src={userImage} />
+                <img alt="" onClick={handleNav} src={userImage} />
               </div>
             </div>
          
@@ -101,7 +95,7 @@ const Navbar = () => {
               </>
               :
               <>
-              <button className='btn btn-primary'><Link to="/login">Login</Link></button>
+              <Link className='text-[13px] font-bold lg:text-base' to="/login">Login</Link>
               </>
             }
       </div>

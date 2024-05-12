@@ -9,7 +9,7 @@ const SliderContent = ({img,heading,heading2,title}) => {
             <h1 className="mb-5 text-5xl lg:text-6xl  font-bold">{heading}</h1>
             {/* <h1 className="mb-5 mt-10  text-3xl lg:text-4xl font-bold">{heading2}</h1> */}
             <p className="mb-5 font-semibold">{title}</p>
-            <button className="btn btn-primary">Get Started</button>
+            <button className="orangeGlossyBg softGreyText text-lato p-2 font-semibold rounded-lg  shadow-lg bg-opacity-10">Get Started</button>
           </div>
         </div>
       </div>

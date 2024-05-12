@@ -11,6 +11,8 @@ import AllOrdered from "./All Pages & Component/Pages/AllOrdered/AllOrdered";
 import SingleCustomerOrder from "./All Pages & Component/Pages/SingleCustomerOrder/SingleCustomerOrder";
 import CustomerUpdatePurchaseQty from "./All Pages & Component/Pages/CustomerUpdatePurchaseQty/CustomerUpdatePurchaseQty";
 import AllItems from "./All Pages & Component/Pages/AllItems/AllItems";
+import UserCreatePost from "./All Pages & Component/Pages/UserCreatePost/UserCreatePost";
+import FoodiesTour from "./All Pages & Component/Pages/ShowUserPost/FoodiesTour";
 
   const router = createBrowserRouter([
     {
@@ -20,7 +22,7 @@ import AllItems from "./All Pages & Component/Pages/AllItems/AllItems";
         children:[
             {
                 index:true,
-                element:<PrivateRoute><Home/></PrivateRoute>
+                element:<Home/>
             },
             {
                 path:"/login",
@@ -32,23 +34,27 @@ import AllItems from "./All Pages & Component/Pages/AllItems/AllItems";
             },
             {
                 path:"/ourService",
-                element:<ResturantFoodUpload/>
+                element:<PrivateRoute><ResturantFoodUpload/></PrivateRoute>
             },
             {
                 path:"/allOrdered",
-                element:<AllOrdered/>,
+                element:<PrivateRoute><AllOrdered/></PrivateRoute>,
             },
             {
                 path:"/food-details/:id",
-                element:<SingleFoodDetails/>
+                element:<PrivateRoute><SingleFoodDetails/></PrivateRoute>
             },
             {
                 path:"/myOrder",
-                element:<SingleCustomerOrder/>
+                element:<PrivateRoute><SingleCustomerOrder/></PrivateRoute>
             },
             {
                 path:"/updateQty/:id",
-                element:<CustomerUpdatePurchaseQty/>                
+                element:<PrivateRoute><CustomerUpdatePurchaseQty/></PrivateRoute>                
+            },
+            {
+                path:'/user-post',
+                element:<PrivateRoute><UserCreatePost/></PrivateRoute>,
             },
             {
                 path:"/all-items",
@@ -56,7 +62,7 @@ import AllItems from "./All Pages & Component/Pages/AllItems/AllItems";
             },
             {
                 path:"/foodTours",
-                element:''
+                element:<FoodiesTour/>
             }
         ]
     }

@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import UseAuth from '../../Hooks/UseAuth';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { FaEye ,FaEyeSlash} from "react-icons/fa";
+
+
 
 const Login = () => {
-
+  const [visible,setVisible] = useState(true)
+  const location = useLocation()
+  const navigate = useNavigate()
   const {login , googleLogin} =UseAuth()
+
+
+  const from = location.state||'/'
+  console.log(location);
+
 
 
 
@@ -16,7 +26,12 @@ const Login = () => {
       const password = form.password.value
 
       login(email , password)
-      .then(res=>console.log(res))
+      .then(res=>{
+        if(res){
+          toast.success("Login Success")
+          return navigate(from || '/') 
+        }
+      })
       .catch(err=>console.log(err))
 
       console.log(email,password)
@@ -26,7 +41,8 @@ const Login = () => {
        googleLogin()
        .then((result) => {
         if(result.user){
-          return toast.success("Login done")
+          toast.success("Login Success")
+          return navigate(from)
         }
         
        }).catch((err) => {
@@ -70,7 +86,16 @@ const Login = () => {
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input type="password" name='password' placeholder="password" className="input input-bordered" required />
+               <div className='relative'>
+               <input type={visible?"password":"text"} name='password' placeholder="password" className="input input-bordered w-full" required  /> 
+           <div onClick={()=>setVisible(!visible)}>
+           {
+                visible?<FaEyeSlash  className='absolute top-4 right-2'></FaEyeSlash>:
+                <FaEye className='absolute top-4 right-2'></FaEye>
+
+               }
+           </div>
+               </div>
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                 </label>

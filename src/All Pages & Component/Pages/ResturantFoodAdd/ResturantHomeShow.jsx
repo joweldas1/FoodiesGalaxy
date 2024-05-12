@@ -55,7 +55,7 @@ const ResturantHomeShow = () => {
     </div>
   </Tabs>
   <div className='text-center'>
-    <button className='btn btn-sm bg-lime-700 text-white'> <Link to="/all-items">All Items</Link> </button>
+    <button className=' p-2 rounded-lg border-2 border-[rgba(255,160,0)] hover:bg-gray-700 hover:text-orange-400 hover:orangeGlossy  text-black font-semibold '> <Link to="/all-items">All Items</Link> </button>
   </div>
         </div>
     );
