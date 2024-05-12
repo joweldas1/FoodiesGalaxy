@@ -5,7 +5,7 @@ import UseAuth from '../../Hooks/UseAuth';
 const AllItemsCard = ({d}) => {
     const {user} =UseAuth()
     const {
-        _id,
+        _id,    
         category,
         description,
         foodImage,

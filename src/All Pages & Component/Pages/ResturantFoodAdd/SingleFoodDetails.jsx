@@ -14,6 +14,7 @@ const SingleFoodDetails = () => {
     const [startDate, setStartDate] = useState(new Date());
     const [qty,setQty] = useState(0)
     const navigate = useNavigate()
+    console.log(qty,singleData);
 
 
     const {id } = useParams()
@@ -38,9 +39,6 @@ const SingleFoodDetails = () => {
     const countOrder=async()=>{
         const prevCount = singleData.totalSell
         const totalCount = prevCount + quantity
-
-      
-
         const res = await axios.post(`${import.meta.env.VITE_API_URL}/updatePurchase/${id}`,{totalSell:totalCount})
         console.log('res--',res);
     }
@@ -58,7 +56,9 @@ const SingleFoodDetails = () => {
             startDate,
             category,
             status :'pending',  
+            
         }
+        console.log(quantity);
        
         const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/customer-ordered`,orderedData)
         if(data.acknowledged===true){
