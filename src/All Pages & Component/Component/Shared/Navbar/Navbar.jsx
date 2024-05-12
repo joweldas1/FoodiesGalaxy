@@ -11,6 +11,7 @@ const Navbar = () => {
 
     const userName = user?.displayName;
     const userImage = user?.photoURL;
+    const userEmail = user?.email;
 
     const handleLogOut = ()=>{
     logOut()
@@ -45,6 +46,7 @@ const Navbar = () => {
     <>
     <li><NavLink to='/myOrder'>My Order</NavLink></li>
     <li><NavLink to='/user-post'>Create Post</NavLink></li>
+    <li><NavLink to={`/user-uploaded/${userEmail}`}>My Posts</NavLink></li>
     <li className='lg:hidden'> <NavLink to='/all-items'> All Items </NavLink> </li>
     <li className='lg:hidden'> <NavLink to='/foodTours'> Foodies Tour </NavLink> </li>
     <li><NavLink to='/ourService'>Cook Room</NavLink></li>

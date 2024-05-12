@@ -13,6 +13,8 @@ import CustomerUpdatePurchaseQty from "./All Pages & Component/Pages/CustomerUpd
 import AllItems from "./All Pages & Component/Pages/AllItems/AllItems";
 import UserCreatePost from "./All Pages & Component/Pages/UserCreatePost/UserCreatePost";
 import FoodiesTour from "./All Pages & Component/Pages/ShowUserPost/FoodiesTour";
+import UserPersonalUploadDataShow from "./All Pages & Component/Pages/UserPersonalUploadDataShow/UserPersonalUploadDataShow";
+import UserUploadDataUpdate from "./All Pages & Component/Pages/UserPersonalUploadDataShow/UserUploadDataUpdate";
 
   const router = createBrowserRouter([
     {
@@ -61,8 +63,17 @@ import FoodiesTour from "./All Pages & Component/Pages/ShowUserPost/FoodiesTour"
                 element:<AllItems/>
             },
             {
+                path:'/user-uploaded/:email',
+                element:<PrivateRoute><UserPersonalUploadDataShow/></PrivateRoute>
+            },
+            {
                 path:"/foodTours",
                 element:<FoodiesTour/>
+            },
+            {
+                path:'/update-user-post/:id',
+                element:<PrivateRoute><UserUploadDataUpdate/></PrivateRoute>,
+                loader:({params})=>fetch(`${import.meta.env.VITE_API_URL}/update-user-post/${params.id}`)
             }
         ]
     }
