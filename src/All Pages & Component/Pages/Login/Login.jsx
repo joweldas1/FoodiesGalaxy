@@ -14,7 +14,6 @@ const Login = () => {
 
 
   const from = location.state||'/'
-  console.log(location);
 
 
 
@@ -34,7 +33,6 @@ const Login = () => {
       })
       .catch(err=>console.log(err))
 
-      console.log(email,password)
   }
 
   const handleGoogleLogin = () =>{

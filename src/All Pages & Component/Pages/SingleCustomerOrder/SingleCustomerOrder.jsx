@@ -3,12 +3,14 @@ import React, { useEffect, useState } from 'react';
 import UseAuth from '../../Hooks/UseAuth';
 import SingleCustomerDataShow from './SingleCustomerDataShow';
 import toast from 'react-hot-toast';
+import UseAxios from '../../Hooks/UseAxios';
 
 const SingleCustomerOrder = () => {
     const [singleCustomerOrder , SetSingleCustomerOrder] = useState([])
     const {user} = UseAuth()
     const email = user?.email;
     const customerName = user?.displayName;
+    const axiosUrl = UseAxios()
     console.log(singleCustomerOrder);
 
     const filtered = singleCustomerOrder.some(item=>item.status==="pending")
@@ -19,7 +21,8 @@ const SingleCustomerOrder = () => {
     },[email])
 
     const getData=async()=>{
-       await axios.get(`${import.meta.env.VITE_API_URL}/myOrder/${email}`)
+        // await axios.get(`${import.meta.env.VITE_API_URL}/myOrder/${email}`,{withCredentials:true})
+        await axiosUrl.get(`/myOrder/${email}`)
         .then(data=>SetSingleCustomerOrder(data?.data))
         .catch(error=>console.log(error))
     }

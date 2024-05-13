@@ -1,11 +1,14 @@
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
 import auth from './firebase.config';
+import axios from 'axios';
+import UseAxios from '../Hooks/UseAxios';
 
 export const authContext = createContext(null)
 const AuthProvider = ({children}) => {
     const [user,setUser] = useState(null)
     const [loading,setLoading] = useState(true)
+    const axiosUrl =UseAxios()
 
     const googleProvider = new GoogleAuthProvider()
 
@@ -36,8 +39,11 @@ const AuthProvider = ({children}) => {
         return signInWithPopup(auth,googleProvider )
     }
 
-    const logOut =() =>{
-        setLoading(true)
+    const logOut = async() =>{
+        setLoading(true) 
+        await axiosUrl.get('/logOut')
+        const {data} = axios.get(`${import.meta.env.VITE_API_URL}/logout`,{withCredentials:true})
+        console.log(data);
         return signOut(auth)
         
     }
@@ -45,11 +51,19 @@ const AuthProvider = ({children}) => {
     useEffect(()=>{
         setLoading(true)
         const unsubscribe = onAuthStateChanged(auth,data=>{
-            setUser(data)
+            setUser(data)  
+            const loggedUser = user?.email;
+            if(data){
+                 axios.post(`${import.meta.env.VITE_API_URL}/jwt`,{loggedUser},{withCredentials:true})
+                // axiosUrl.post('/jwt',{loggedUser})
+                .then(res=>res)
+                .catch(err=>console.log(err))
+            }
+            
             setLoading(false)
         })
          return ()=>{unsubscribe()}
-    },[])
+    },[user])
 
 
 

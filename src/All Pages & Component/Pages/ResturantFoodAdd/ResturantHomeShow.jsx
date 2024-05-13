@@ -4,14 +4,17 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import ResturantCard from './ResturantCard';
 import HeadingAndTitle from '../../Component/Shared/HeadingAndTitle/HeadingAndTitle';
 import { Link } from 'react-router-dom';
+import UseAxios from '../../Hooks/UseAxios';
 
 
 const ResturantHomeShow = () => {
     const [homeData ,setHomeData ] = useState()
+    const axiosUrl = UseAxios()
 
   
     useEffect(()=>{
-        axios.get(`${import.meta.env.VITE_API_URL}/all-food`)
+        // axios.get(`${import.meta.env.VITE_API_URL}/all-food`,{withCredentials:true})
+        axiosUrl.get('/all-food')
         .then(data=>{setHomeData(data?.data)})
         .catch(err=>console.log(err))
     },[])
