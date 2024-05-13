@@ -14,7 +14,6 @@ const SingleFoodDetails = () => {
     const [startDate, setStartDate] = useState(new Date());
     const [qty,setQty] = useState(0)
     const navigate = useNavigate()
-    console.log(qty,singleData);
 
 
     const {id } = useParams()
@@ -68,6 +67,7 @@ const SingleFoodDetails = () => {
         }
        
     }
+    console.log(qty,singleData);
 
     
 
@@ -90,8 +90,8 @@ const SingleFoodDetails = () => {
             <p className='py-2 f font-lato font-medium'>{singleData?.description}</p>    
             <p><span className='text-lg font-bold font-lato'>Country</span> : {singleData?.origin}</p>
             <p><span className='text-lg font-bold font-lato'>Ingredient : </span>{singleData?.ingredients}</p>
-               
-            <p className='font-bold'><span className='text-lg font-bold font-lato'>Total sell : </span >{singleData?.totalSell} Pcs</p>
+                
+            <p className='font-bold'><span className='text-lg font-bold font-lato'>Total sell : </span >  {singleData? singleData?.totalSell : "0"}       Pcs</p>
             <p className='font-bold'><span className='text-lg font-bold font-lato'>Price : </span >{singleData?.price}/-</p>
             <div className='flex  mb-5'>
             <p className='text-lg font-bold font-lato'>Quantity : </p> <input onChange={e=>setQty(e.target.value)} className=' border hover:border-2 border-blue-800 rounded-md ml-3 w-11 ' name='quantity'  type="number" required />

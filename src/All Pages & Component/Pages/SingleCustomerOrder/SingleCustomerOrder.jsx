@@ -59,10 +59,9 @@ const SingleCustomerOrder = () => {
     return (
         <div className='py-16'>
             <div>
-                <h1 className='text-center mx-2 font-lato text-3xl'>Hello, <span className='text-blue-600'>{customerName}</span> you have <span className='text-blue-600'>
-                {singleCustomerOrder.length}</span> order in Processing</h1>
+                
 
-                <h1 className=' text-2xl font-semibold mt-5'>Purchase History</h1>
+                <h1 className=' text-4xl font-lato text-center my-2 font-semibold mt-5'>Purchase History</h1>
 
 
                 <div className='flex flex-col-reverse lg:flex-row w-full lg:space-x-4 '>

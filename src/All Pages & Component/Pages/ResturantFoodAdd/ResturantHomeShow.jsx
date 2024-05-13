@@ -35,6 +35,7 @@ const ResturantHomeShow = () => {
                     <Tab  id='tabs' className='tab'>Breakfast</Tab>
                     <Tab  id='tabs' className='tab'>Lunch</Tab>
                     <Tab  id='tabs' className='tab'>Dinner</Tab>
+                    <Tab  id='tabs' className='tab'>All time Favorite  </Tab>
                   </TabList>
 
     <div className='my-5'>

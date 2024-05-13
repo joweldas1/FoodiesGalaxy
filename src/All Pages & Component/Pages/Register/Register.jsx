@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import UseAuth from '../../Hooks/UseAuth';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { FaEye ,FaEyeSlash} from "react-icons/fa";
+import { ErrorMessage } from "@hookform/error-message"
+
 
 const Register = () => {
+  const [visible,setVisible] = useState(true) 
     const {createUser,updateUser,setUser} = UseAuth()
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, setError,watch, formState: { errors } } = useForm({criteriaMode:'all'});
 
     const onSubmit = data =>{ 
       const userName = data.name
@@ -37,14 +41,14 @@ const Register = () => {
         <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Login now!</h1>
-            <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            <h1 className="text-5xl font-bold">Register Now</h1>
+            
           </div>
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
 
             <div className="form-control">
-                <input type="text" placeholder="Enter Your Name" {...register("name")} name='name' className="input input-bordered" required />
+                <input type="text" placeholder="Enter Your Name" {...register("name" ,)} name='name' className="input input-bordered" required />
               </div>
 
             <div className="form-control">
@@ -56,21 +60,52 @@ const Register = () => {
                 <input type="email" placeholder="email" {...register("email")} name='email' className="input input-bordered" required />
               </div>
 
+              <div className='relative'>
+               <input type={visible?"password":"text"} {...register('password',
+                {
+                  required: "This is required.",
+                  pattern: {
+                    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/,
+                    message: "Contains at least one special character ,"
+                  },
+                  maxLength: {
+                    value: 20,
+                    message: "Password can not set more than 20 words"
+                  }
+                }
+               ) } name='password' placeholder="password" className="input input-bordered w-full" required  /> 
 
-              <div className="form-control">
-                <input type="password" placeholder="password" {...register("password")} name='password' className="input input-bordered" required />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                </label>
-              </div>
+<ErrorMessage
+        errors={errors}
+        name="password"
+        render={({ messages }) =>
+          messages &&
+          Object.entries(messages).map(([type, message]) => (
+            <p className='text-red-600' key={type}>{message}</p>
+          ))
+        }
+      />
+
+
+
+
+           <div onClick={()=>setVisible(!visible)}>
+           {
+                visible?<FaEyeSlash  className='absolute top-4 right-2'></FaEyeSlash>:
+                <FaEye className='absolute top-4 right-2'></FaEye>
+
+               }
+           </div>
+           </div>
 
 
 
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Register</button>
               </div>
+              <h2 className='text-center py-2'>Already Have an account ,Please <Link to='/login' className='text-blue-600 font-bold'> Login</Link> </h2>
+
             </form>
-            <h2 className='text-center py-2'>Already Have an account ,Please <Link to='/register' className='text-blue-600'> Login</Link> </h2>
           </div>
         </div>
       </div>

@@ -103,8 +103,9 @@ const Login = () => {
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>
               </div>
+              <h2 className='text-center  py-2'>Dont't Have an account ,Please <Link to='/register' className='text-blue-600 font-bold'> Register</Link> </h2>
+
             </form>
-            <h2 className='text-center py-2'>Dont't Have an account ,Please <Link to='/register' className='text-blue-600'> Register</Link> </h2>
           </div>
         </div>
       </div>

@@ -22,7 +22,7 @@ const   AllItems = () => {
 
     
     const getData=()=>{
-      axios.get(`${import.meta.env.VITE_API_URL}/todaysMeal?category=${selectCategory}&sort=${setPriceFilter}&search=${selectSearch}&sell=${sellQtyWise}&page=${currentPage}&size=${itemsPerPage}`)
+      axios.get(`${import.meta.env.VITE_API_URL}/todaysMeal?category=${selectCategory}&price=${setPriceFilter}&search=${selectSearch}&sell=${sellQtyWise}&page=${currentPage}&size=${itemsPerPage}`)
       .then(res=>setItems(res.data))
       .catch(err=>console.log(err))
     }
@@ -32,8 +32,8 @@ const   AllItems = () => {
     },[selectCategory , setPriceFilter ,selectSearch , sellQtyWise])
 
     useEffect(()=>{
-       axios.get(`${import.meta.env.VITE_API_URL}/count?category=${selectCategory}`)
-      .then(res=> setCount(res.data.data))
+       axios.get(`${import.meta.env.VITE_API_URL}/count?category=${selectCategory}&sort=${setPriceFilter}&search=${selectSearch}&sell=${sellQtyWise}&page=${currentPage}&size=${itemsPerPage}`)
+      .then(res=> {console.log(res); setCount(res.data.data)})
       .catch(err=>console.log(err))
     },[selectCategory])
 
@@ -70,41 +70,45 @@ const   AllItems = () => {
         <div className='pt-16'>
             <HeadingAndTitle heading={heading} title={title} />
 
-            <div className=' flex items-center justify-between bg-lime-800 bg-opacity-75 z-50 mx-auto'>
-                <div>
-              <select name="" id="" value={selectCategory}  onChange={(e)=>setSelectCategory(e.target.value)}>
-                <option value="">Select Category</option>
+            <div className='mx-2'>
+            <div className=' lg:flex items-center justify-between py-2 px-2 border border-[#081229] rounded-lg bg-[rgba(255,165,0)] bg-opacity-75 z-50 mx-auto'>
+                <div className='lg:flex lg:space-x-4'>
+              <select name="" id="" value={selectCategory}  onChange={(e)=>setSelectCategory(e.target.value)} className='btn btn-sm hidden lg:block btn-primary bg-[rgba(65,131,215)] text-white hover:bg-[rgba(58, 83, 155)]'>
+                <option value=""> Category</option>
                 <option value="breakfast">Breakfast</option>
                 <option value="lunch">Lunch</option>
-                <option value="dinner">Breakfast</option>
+                <option value="dinner">Dinner</option>
               </select>
 
-              <select name="" id="" value={setPriceFilter} onChange={(e)=>selectPriceFilter(e.target.value)}>
-                <option value="">Filter Price</option>
+              <select className='btn btn-sm hidden md:block btn-primary bg-[rgba(65,131,215)] text-white hover:bg-[rgba(58, 83, 155)]' name="" id="" value={setPriceFilter} onChange={(e)=>selectPriceFilter(e.target.value)}>
+                <option value="">Price</option>
                 <option value="asc">High to Low</option>
                 <option value="dsc">Low to High</option>
               </select>
 
-              <select name="" id="" value={sellQtyWise} onChange={(e)=>setSellQtyWise(e.target.value)}>
-                <option value="">Filter Sell</option>
-                <option value="asc">Hight to Low</option>
-                <option value="dsc">Low to High</option>
+              <select className='btn  btn-sm btn-primary hidden md:block bg-[rgba(65,131,215)] text-white hover:bg-[rgba(58, 83, 155)]'   name="" id="" value={sellQtyWise} onChange={(e)=>setSellQtyWise(e.target.value)}>
+                <option value="">Sell</option>
+                <option value="dsc">Hight to Low</option>
+                <option value="asc">Low to High</option>
               </select>
 
-            <button onClick={handleReset}>
-                Reset Query 
-            </button>
+
+           
                 </div>
 
-                <div>
+                <div className='flex flex-row-reverse lg:flex-row-reverse  items-end md:items-center gap-2 lg:gap-4'>
+                <button className='btn btn-sm btn-primary bg-[rgba(65,131,215)] text-white hover:bg-[rgba(58, 83, 155)]' onClick={handleReset}>
+                Reset Query 
+            </button>
                 <form onSubmit={handleSubmit}>
-            <label className="input input-bordered flex items-center gap-2">
+            <label className="input h-8 input-bordered flex items-center gap-2">
                 <input
                 type="text"
                 name="searchValue"
                 value={selectSearch}
                 onChange={(e)=>setSelectSearch(e.target.value)}
-                className="grow"
+                className='bg-[rgba(65,131,215)] text-[rgba(255,165,0)]  hover:bg-[rgba(58, 83, 155)]'
+                // className="grow "
                 placeholder="Search"
                 />
         <button  type="submit">
@@ -117,14 +121,15 @@ const   AllItems = () => {
     </div>
 
             </div>
+            </div>
             <div className='grid md:grid-cols-3  lg:grid-cols-4'>
             {items.map((d,idx)=>(<AllItemsCard d={d} key={idx} />))}
             </div>
 
-            <div>
+            <div className='flex items-center justify-center space-x-4'>
               {pages?.map((data)=>( 
-                <div key={data}>
-                                  <button onClick={()=>handlePagination(data)}> {data} </button>
+                <div className='' key={data}>
+                                  <button className=' bg-orange-500 px-3 my-3 text-white ' onClick={()=>handlePagination(data)}> {data} </button>
 
                 </div>
                ))}
