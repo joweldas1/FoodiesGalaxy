@@ -59,7 +59,6 @@ const AuthProvider = ({children}) => {
                 .then(res=>res)
                 .catch(err=>console.log(err))
             }
-            
             setLoading(false)
         })
          return ()=>{unsubscribe()}

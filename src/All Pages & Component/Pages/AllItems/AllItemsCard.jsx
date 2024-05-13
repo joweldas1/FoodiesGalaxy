@@ -16,7 +16,6 @@ const AllItemsCard = ({d}) => {
         price,
         totalSell
         } =d
-        console.log(d);
     return (
         <div>
             

@@ -3,12 +3,15 @@ import React, { useEffect, useState } from 'react';
 import AllItemsCard from './AllItemsCard';
 import HeadingAndTitle from '../../Component/Shared/HeadingAndTitle/HeadingAndTitle';
 
-const AllItems = () => {
+const   AllItems = () => {
     const [items,setItems] = useState([])
     const [selectCategory,setSelectCategory] = useState('')
     const [setPriceFilter,selectPriceFilter] = useState('')
     const [sellQtyWise,setSellQtyWise] = useState('')
     const [selectSearch,setSelectSearch] = useState('')
+    const [currentPage,setCurrentPage] = useState(1)
+    const [itemsPerPage,setItemsPerPage] = useState(8)
+    const [count,setCount] = useState(0)
 
     const handleReset=()=>{
         setSelectCategory('')
@@ -18,14 +21,34 @@ const AllItems = () => {
     }
 
     
-
+    const getData=()=>{
+      axios.get(`${import.meta.env.VITE_API_URL}/todaysMeal?category=${selectCategory}&sort=${setPriceFilter}&search=${selectSearch}&sell=${sellQtyWise}&page=${currentPage}&size=${itemsPerPage}`)
+      .then(res=>setItems(res.data))
+      .catch(err=>console.log(err))
+    }
 
     useEffect(()=>{
-    axios.get(`${import.meta.env.VITE_API_URL}/todaysMeal?category=${selectCategory}&sort=${setPriceFilter}&search=${selectSearch}&sell=${sellQtyWise}`)
-    .then(res=>setItems(res.data))
-    .catch(err=>console.log(err))
-      
+      getData()      
     },[selectCategory , setPriceFilter ,selectSearch , sellQtyWise])
+
+    useEffect(()=>{
+       axios.get(`${import.meta.env.VITE_API_URL}/count?category=${selectCategory}`)
+      .then(res=> setCount(res.data.data))
+      .catch(err=>console.log(err))
+    },[selectCategory])
+
+    const numberOfPages = Math.ceil(count/itemsPerPage);
+    const pages = [...Array(numberOfPages).keys()].map(idx=>idx+1)
+
+    const handlePagination = (value) =>{
+        setCurrentPage(value)
+        getData()
+      
+    }
+
+
+
+    console.log(currentPage);
 
 
       
@@ -91,20 +114,22 @@ const AllItems = () => {
         </button>
       </label>
     </form>
-                  
-               
-                </div>
-           
-       
-                
-
-                
+    </div>
 
             </div>
             <div className='grid md:grid-cols-3  lg:grid-cols-4'>
             {items.map((d,idx)=>(<AllItemsCard d={d} key={idx} />))}
-
             </div>
+
+            <div>
+              {pages?.map((data)=>( 
+                <div key={data}>
+                                  <button onClick={()=>handlePagination(data)}> {data} </button>
+
+                </div>
+               ))}
+            </div>
+
         </div>
     );
 };
