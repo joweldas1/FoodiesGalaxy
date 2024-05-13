@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import FoodiesData from './FoodiesData';
 
 const FoodiesTour = () => {
-    const [postData,setPostData] = useState()
+    const [postData,setPostData] = useState([])
     
     useEffect(()=>{
         axios.get(`${import.meta.env.VITE_API_URL}/posted-data`)
@@ -15,7 +16,11 @@ const FoodiesTour = () => {
 
     return (
         <div>
-            
+            <div className='lg:grid grid-cols-2 mx-1 lg:gap-2 mb-5'>
+
+            {postData.map((data,idx)=>  <FoodiesData data={data} key={idx}/>  )}
+            </div>
+
         </div>
     );
 };

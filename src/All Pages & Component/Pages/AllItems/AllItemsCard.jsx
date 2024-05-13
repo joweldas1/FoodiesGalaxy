@@ -22,7 +22,7 @@ const AllItemsCard = ({d}) => {
         <div>
             
 
-<div className="max-w-sm border overflow-hidden m-1  border-gray-200 rounded-lg shadow bg-[#333652]">
+<div className="max-w-sm border overflow-hidden m-1 sellP  border-gray-200 rounded-lg shadow bg-[#333652]">
     <div className='imgHover relative'>
     <img className="rounded-t-lg hover:scale-125 w-full h-60 lg:h-52  "  src={foodImage} alt="" />
   

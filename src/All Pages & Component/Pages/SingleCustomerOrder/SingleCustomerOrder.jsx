@@ -92,9 +92,9 @@ const SingleCustomerOrder = () => {
                 </div>
 
                 <div>
-                <div className="max-w-full my-2 p-4 overflow-hidden bg-sky-900 rounded-lg h-full ">
-                   <div className='text-white p lg:text-center font-slab text-xl'>
-                   <h1 className='text-white underline'>Total Payment Amount</h1>
+                <div className="max-w-full my-2 p-4 border-2  border-[rgba(255,165,0)] overflow-hidden bg-[#081229] sellP rounded-lg h-full ">
+                   <div className='  text-[rgba(255,165,0)]   lg:text-center font-slab text-xl'>
+                   <h1 className='  text-[rgba(255,165,0)] underline my-2'>Total Payment Amount</h1>
                    <h1>Total Price : <span>{totalPrice} /-</span> </h1>
                    <h1>Total Quantity : <span>{totalQuantity}</span> </h1>
                    <button className='btn btn-sm mt-3'>Payment</button> <br />

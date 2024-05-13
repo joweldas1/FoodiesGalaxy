@@ -7,7 +7,7 @@ import { FaInstagram } from "react-icons/fa";
 const Footer = () => {
     return (
         <div>
-            <footer className="footer footer-center p-10 bg-[#081229] border-2 border-[rgba(255,165,0)] rounded">
+            <footer className="footer footer-center p-10 bg-[#081229] border-2 border-[rgba(255,165,0)] rounded-lg">
   <nav className="grid grid-flow-col gap-4 orangeGlossy font-semibold ">
     <a className="link link-hover">All Items</a>
     <a className="link link-hover">Foodies Tour</a>

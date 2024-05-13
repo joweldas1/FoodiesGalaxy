@@ -35,7 +35,7 @@ const ResturantHomeShow = () => {
                     <Tab  id='tabs' className='tab'>Breakfast</Tab>
                     <Tab  id='tabs' className='tab'>Lunch</Tab>
                     <Tab  id='tabs' className='tab'>Dinner</Tab>
-                    <Tab  id='tabs' className='tab'>All time Favorite  </Tab>
+                    <Tab  id='tabs' className='tab hidden lg:block'>All time Favorite  </Tab>
                   </TabList>
 
     <div className='my-5'>
@@ -55,6 +55,12 @@ const ResturantHomeShow = () => {
                   <div className=' grid mx-2 grid-cols-2 lg:grid-cols-4 justify-center items-center gap-5'>
                   {homeData?.filter(f=>f.category === "dinner").slice(0,8).map((d,idx)=>( <ResturantCard key={idx} d={d}></ResturantCard> ))}
                   </div>
+              </TabPanel>
+              <TabPanel>
+                <div className='h-full text-center bg-black text-white font-bold py-24 rounded-md text-2xl' >
+                    <h1>This Section Will Available Soon</h1>
+                </div>
+                  
               </TabPanel>
     </div>
   </Tabs>
