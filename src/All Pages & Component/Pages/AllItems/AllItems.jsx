@@ -122,11 +122,11 @@ const   AllItems = () => {
 
             </div>
             </div>
-            <div className='grid md:grid-cols-3  lg:grid-cols-4'>
+            <div className='md:grid md:grid-cols-3  lg:grid-cols-4'>
             {items.map((d,idx)=>(<AllItemsCard d={d} key={idx} />))}
             </div>
 
-            <div className='flex items-center justify-center space-x-4'>
+            <div className='flex items-center justify-center lg:space-x-4'>
               {pages?.map((data)=>( 
                 <div className='' key={data}>
                                   <button className=' bg-orange-500 px-3 my-3 text-white ' onClick={()=>handlePagination(data)}> {data} </button>

@@ -9,11 +9,7 @@ const AuthProvider = ({children}) => {
     const [user,setUser] = useState(null)
     const [loading,setLoading] = useState(true)
     const axiosUrl =UseAxios()
-
     const googleProvider = new GoogleAuthProvider()
-
-
-
 
 
     const createUser = (email,password) =>{
@@ -21,14 +17,15 @@ const AuthProvider = ({children}) => {
         return createUserWithEmailAndPassword(auth,email,password)
     }
 
+
     const updateUser = (name,imgUrl) =>{
         setLoading(true)
         return updateProfile(auth.currentUser, {
             displayName:name, 
             photoURL:imgUrl
-          })
-    }
+        })}
 
+        
     const login = (email,password)=>{
         setLoading(true)
         return signInWithEmailAndPassword(auth,email,password   )

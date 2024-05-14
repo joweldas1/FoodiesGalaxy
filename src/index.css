@@ -129,3 +129,14 @@
   .sellP{
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   }
+
+  .sliderM{
+    height:20vh;
+    width:100%;
+  }
+
+  .sliderL{
+    height: 300px;
+    width: 100%;
+  }
+

@@ -22,9 +22,9 @@ const AllItemsCard = ({d}) => {
         <div>
             
 
-<div className="max-w-sm border overflow-hidden m-1 sellP  border-gray-200 rounded-lg shadow bg-[#333652]">
+<div className=" border overflow-hidden m-1 sellP  border-gray-200 rounded-lg shadow bg-[#333652]">
     <div className='imgHover relative'>
-    <img className="rounded-t-lg hover:scale-125 w-full h-60 lg:h-52  "  src={foodImage} alt="" />
+    <img className="rounded-t-lg hover:scale-125 w-full h-72 lg:h-52  "  src={foodImage} alt="" />
   
 
 
@@ -46,7 +46,7 @@ const AllItemsCard = ({d}) => {
      </Link>
    </div>
 
-   <div className='ml-3'>
+   <div className='lg:ml-3'>
      {
          totalSell>0?<div className='  flex   flex-col w-28  py-5 text-white rounded-full items-center justify-center  text-center'>
          <p className='font-bold text-3xl font-lato text-[rgba(255,160,0)]'>{totalSell}</p>

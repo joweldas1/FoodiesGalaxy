@@ -2,7 +2,8 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Pagination ,Autoplay} from 'swiper/modules';
+import 'swiper/css/navigation'
+import { Pagination ,Autoplay, Navigation} from 'swiper/modules';
 import SliderContent from './SliderContent';
 
 import img1 from '../../../../assets/slider/1.jpg'
@@ -14,13 +15,16 @@ import img3 from '../../../../assets/slider/3.jpg'
 
 const Slider = () => {
     return (
-        <Swiper pagination={true} modules={[Pagination ,Autoplay ,Pagination]} className="mySwiper"
+        <div >
+            <Swiper pagination={true} modules={[Autoplay ,Pagination]} className="mySwiper"
         autoplay={{
             delay: 2500,
             disableOnInteraction: false,
           }}
-        
           loop={true}
+
+
+        
 
         >
         <SwiperSlide>
@@ -52,7 +56,9 @@ const Slider = () => {
         </SwiperSlide>
        
      
-      </Swiper>
+             </Swiper>
+
+        </div>
     );
 };
 
