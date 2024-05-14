@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import UseAuth from '../../Hooks/UseAuth';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -52,6 +53,8 @@ const UserCreatePost = () => {
 
     return (
         <div className='pt-16 bg-slate-100 w-full mx-auto'>
+          <Helmet><title>FoodiesGalaxy | User's Post form</title></Helmet>
+
             <HeadingAndTitle heading={title}/>
             <div className="card shrink-0 lg:w-1/2 mx-auto shadow-2xl bg-base-100">
       <form className="card-body border-2 border-[rgba(255,160,0)]" onSubmit={handleSubmit(onSubmit)}>

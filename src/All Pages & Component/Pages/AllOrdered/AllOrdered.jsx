@@ -2,20 +2,21 @@ import axios, { all } from 'axios';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import UseAuth from '../../Hooks/UseAuth';
+import { Helmet } from 'react-helmet-async';
 
 const AllOrdered = () => {
     const [allOrder,setAllOrder] = useState([])
     const {user}=UseAuth()
     const userEmail = user?.email
 
-    console.log(user.email);
+    console.log(allOrder);
 
     useEffect(()=>{
       getData()
     },[])
 
     const getData = () =>{
-      axios.get(`${import.meta.env.VITE_API_URL}/ordered`)
+       axios.get(`${import.meta.env.VITE_API_URL}/ordered`)
       .then(data=>setAllOrder(data.data))
       .catch(error=>console.log(error))
     }
@@ -47,6 +48,7 @@ const AllOrdered = () => {
 
     return (
         <div className='pt-16'>
+          <Helmet><title>FoodiesGalaxy | Order Collection </title></Helmet>
           <h1 className='text-center text-2xl font-bold font-lato'>All Ordered Summary</h1>
 
 <div className="overflow-x-auto ">
@@ -82,8 +84,11 @@ const AllOrdered = () => {
           ${p.status==="confirmed" && 'text-blue-800 font-semibold  bg-blue-200 backdrop-blur-2xl bg-opacity-85 bg-blend-saturation' }
           ${p.status==="cancel" && ' font-semibold text-red-800 bg-red-100' }
           ${p.status==="cooking" && 'text-[rgba(255,165,0)] bg-green-100' }
+          ${p.status==="pending" && 'text-purple-700 font-semibold  bg-green-200' }
           `}>
+
           {p.status}
+
           </p>
           </td>
 
@@ -91,10 +96,10 @@ const AllOrdered = () => {
       
        
         {
-         p.status==="pending" && <button onClick={()=>handleCookingAndCancel(p._id,p.status,"cancel",p.email,userEmail)} className='bg-red-500 text-white p-1 rounded-lg text-sm'>Cancel</button> 
+         p.status==="pending" && <button onClick={()=>handleCookingAndCancel(p._id,p.status,"cancel",p.email,userEmail)} className='bg-red-500 text-white backdrop-blur-3xl bg-opacity-95 bg-blend-drawer-overlay  p-1 rounded-lg text-sm'>Cancel</button> 
         }
          {
-          p.status!=="cancel" && p.status!=="cooking"&& p.status!=="confirmed" ?<button onClick={()=>handleCookingAndCancel(p._id,p.status,"cooking",p.email,userEmail)} className='bg-lime-500 text-white p-1 rounded-lg text-sm'>Cooking</button> :""
+          p.status!=="cancel" && p.status!=="cooking"&& p.status!=="confirmed" ?<button onClick={()=>handleCookingAndCancel(p._id,p.status,"cooking",p.email,userEmail)} className=' bg-green-800 text-white p-1 rounded-lg text-sm  backdrop-blur-2xl'>Cooking</button> :""
         }
         {
           p.status==="cooking"&&<button onClick={()=>handleCookingAndCancel(p._id,p.status,"confirmed",p.email,userEmail)} className='bg-blue-500 text-white p-1 rounded-lg text-sm'>Cooking Finish</button>

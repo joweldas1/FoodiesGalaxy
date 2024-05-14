@@ -12,8 +12,10 @@ import { Helmet } from 'react-helmet-async';
 const SingleFoodDetails = () => {
     const [singleData,setSingleData] = useState('')
     const [startDate, setStartDate] = useState(new Date());
+    const [sellCount,setSellCount] = useState()
     const [qty,setQty] = useState(0)
     const navigate = useNavigate()
+    console.log(singleData);
 
 
     const {id } = useParams()
@@ -31,16 +33,19 @@ const SingleFoodDetails = () => {
 
     useEffect(()=>{
         axios.get(`${import.meta.env.VITE_API_URL}/food-details/${id}`)
-        .then(res=> setSingleData(res.data))
+        .then(res=> {const data=res.data; setSingleData(data)})
         .catch(err=>console.log(err))
     },[id])
+
+    
     
     const countOrder=async()=>{
         const prevCount = singleData.totalSell
         const totalCount = prevCount + quantity
-        const res = await axios.post(`${import.meta.env.VITE_API_URL}/updatePurchase/${id}`,{totalSell:totalCount})
+        const res = await axios.patch(`${import.meta.env.VITE_API_URL}/updatePurchase/${id}`,{totalSell:totalCount})
         console.log('res--',res);
     }
+
 
 
     const handlePlaceOrder = async () =>{

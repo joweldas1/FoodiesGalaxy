@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import UseAuth from '../../Hooks/UseAuth';
 import UserUploadShowCard from './UserUploadShowCard';
+import { Helmet } from 'react-helmet-async';
 
 const UserPersonalUploadDataShow = () => {
     const [data,setData]=useState()
@@ -24,6 +25,8 @@ const UserPersonalUploadDataShow = () => {
 
     return (
         <div className='bg-[#0d1829] pt-16 pb-10 '>
+            <Helmet><title>FoodiesGalaxy | My post</title></Helmet>
+
             <div className='grid m-2 gap-3 lg:gap-10 lg:grid-cols-3'>
             {
                 data?.map((d,idx)=> <UserUploadShowCard key={idx} idx={idx} getData={getData} data={d} /> )

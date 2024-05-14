@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import UseAuth from '../../Hooks/UseAuth';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaEye ,FaEyeSlash} from "react-icons/fa";
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -11,18 +12,21 @@ const Login = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const {login , googleLogin} =UseAuth()
+  const [logError,setLogError]=useState(false)
+
 
 
   const from = location.state||'/'
 
 
-
+  console.log(logError);
 
   const handleOnSubmit=e=>{
       e.preventDefault()
       const form = e.target;
       const email = form.email.value;
-      const password = form.password.value
+      const password = form.password.value;
+
 
       login(email , password)
       .then(res=>{
@@ -31,7 +35,7 @@ const Login = () => {
           return navigate(from || '/') 
         }
       })
-      .catch(err=>console.log(err))
+      .catch(err=>{if(err)setLogError(true)})
 
   }
 
@@ -44,6 +48,7 @@ const Login = () => {
         }
         
        }).catch((err) => {
+        if(err)setLogError(true)
         console.log(err);
         
        });
@@ -52,6 +57,8 @@ const Login = () => {
     return (
       
         <div className="hero min-h-screen bg-base-200">
+          <Helmet><title>FoodiesGalaxy | User login form</title></Helmet>
+
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Login now!</h1>
@@ -93,6 +100,9 @@ const Login = () => {
 
                }
            </div>
+           {
+            logError===true?<> <span className='text-red-600 text-md font-semibold'>Invalid email or password</span> </>: " "
+           }
                </div>
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">Forgot password?</a>

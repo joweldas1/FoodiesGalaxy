@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import useAOS from '../../../../../useAOS';
 
 const AddressHome = () => {
+    useEffect(()=>{
+        useAOS()
+    },[])
     return (
-        <div className=' my-20 lg:my-36'>
+        <div className=' my-20 lg:my-36'  data-aos="fade-up"
+        data-aos-anchor-placement="bottom-bottom">
             <div>
 
                 <div className='text-center mx-1'>

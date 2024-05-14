@@ -14,16 +14,21 @@ import img5 from '../../../../assets/slider/image.png';
 import img6 from '../../../../assets/slider/lunch-setup-with-teriyaki-chicken-green-salad-mushroom-soup-bread-orange-juice-140725-6907.jpg';
 import img7 from '../../../../assets/slider/traditional-full-english-breakfast-with-fried-eggs-sausage-tomato-beans-toast-bacon-plate_1150-37820.jpg'
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import useAOS from '../../../../../useAOS';
 
 
 
 const HomeSecondSlider = () => {
-
+useEffect(()=>{
+  useAOS()
+},[])
 
 
     return (
         
-        <div className='lg:my-10 text-sm font-semibold w-full py-10 mx-auto bg-[#081229]'>
+        <div data-aos="fade-up"
+        data-aos-anchor-placement="bottom-bottom" className='lg:my-10 text-sm font-semibold w-full py-10 mx-auto bg-[#081229]'>
                             <p className='text-center text-[rgba(255,165,0)]'><span >HOME</span> | <span>All Post</span></p>
 
             

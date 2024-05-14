@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import AllItemsCard from './AllItemsCard';
 import HeadingAndTitle from '../../Component/Shared/HeadingAndTitle/HeadingAndTitle';
+import { Helmet } from 'react-helmet-async';
 
 const   AllItems = () => {
     const [items,setItems] = useState([])
@@ -35,7 +36,7 @@ const   AllItems = () => {
        axios.get(`${import.meta.env.VITE_API_URL}/count?category=${selectCategory}&sort=${setPriceFilter}&search=${selectSearch}&sell=${sellQtyWise}&page=${currentPage}&size=${itemsPerPage}`)
       .then(res=> {console.log(res); setCount(res.data.data)})
       .catch(err=>console.log(err))
-    },[selectCategory])
+    },[selectCategory,setPriceFilter,selectSearch,sellQtyWise])
 
     const numberOfPages = Math.ceil(count/itemsPerPage);
     const pages = [...Array(numberOfPages).keys()].map(idx=>idx+1)
@@ -48,7 +49,6 @@ const   AllItems = () => {
 
 
 
-    console.log(currentPage);
 
 
       
@@ -68,6 +68,7 @@ const   AllItems = () => {
 
     return (
         <div className='pt-16'>
+          <Helmet><title>FoodiesGalaxy | All Items</title></Helmet>
             <HeadingAndTitle heading={heading} title={title} />
 
             <div className='mx-2'>
@@ -82,8 +83,8 @@ const   AllItems = () => {
 
               <select className='btn btn-sm hidden md:block btn-primary bg-[rgba(65,131,215)] text-white hover:bg-[rgba(58, 83, 155)]' name="" id="" value={setPriceFilter} onChange={(e)=>selectPriceFilter(e.target.value)}>
                 <option value="">Price</option>
-                <option value="asc">High to Low</option>
-                <option value="dsc">Low to High</option>
+                <option value="dsc">High to Low</option>
+                <option value="asc">Low to High</option>
               </select>
 
               <select className='btn  btn-sm btn-primary hidden md:block bg-[rgba(65,131,215)] text-white hover:bg-[rgba(58, 83, 155)]'   name="" id="" value={sellQtyWise} onChange={(e)=>setSellQtyWise(e.target.value)}>

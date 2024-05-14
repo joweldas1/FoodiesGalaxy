@@ -16,7 +16,7 @@ const ResturantHomeShow = () => {
         // axios.get(`${import.meta.env.VITE_API_URL}/all-food`,{withCredentials:true})
         axiosUrl.get('/all-food')
         .then(data=>{setHomeData(data?.data)})
-        .catch(err=>console.log(err))
+        .catch(err=>console.log(err)) 
     },[])
 
     const heading = "Check Out Our Dishes";
@@ -30,7 +30,7 @@ const ResturantHomeShow = () => {
         <div>
           <HeadingAndTitle heading={heading} title={title}/>
               <Tabs>
-                  <TabList 
+                  <TabList data-aos="fade-up" data-aos-anchor-placement="bottom-center"
                   className='flex justify-center items-center space-x-6 font-lato font-bold '>
                     <Tab  id='tabs' className='tab'>Breakfast</Tab>
                     <Tab  id='tabs' className='tab'>Lunch</Tab>
@@ -64,8 +64,8 @@ const ResturantHomeShow = () => {
               </TabPanel>
     </div>
   </Tabs>
-  <div className='text-center'>
-    <button className=' p-2 rounded-lg border-2 border-[rgba(255,160,0)] hover:bg-gray-700 hover:text-orange-400 hover:orangeGlossy  text-black font-semibold '> <Link to="/all-items">All Items</Link> </button>
+  <div  className=' text-center'>
+    <button  className=' p-2 rounded-lg border-2 border-[rgba(255,160,0)] hover:bg-gray-700 hover:text-orange-400 hover:orangeGlossy  text-black font-semibold '> <Link to="/all-items">All Items</Link> </button>
   </div>
         </div>
     );

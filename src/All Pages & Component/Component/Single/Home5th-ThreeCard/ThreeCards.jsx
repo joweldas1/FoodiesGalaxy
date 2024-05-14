@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import img1 from '../../../../assets/slider/1.jpg'
 import img2 from '../../../../assets/slider/service.jpg'
 import img3 from '../../../../assets/slider/commitment.jpg'
 import { GoArrowUpRight } from "react-icons/go";
 import { Link } from 'react-router-dom';
+import useAOS from '../../../../../useAOS';
 
 const ThreeCards = () => {
+    useEffect(()=>{
+        useAOS()
+    },[])
     return (
         <div className='mt-20'>
 
             <div className='flex flex-col-reverse mx-1 lg:flex-row items-center mt-10 gap-5 lg:gap-10 text-center lg:text-left'>
-                <div className='w-full lg:w-1/2'> <img src={img1} alt="" /> </div>
-                <div className='w-full lg:w-1/2'>
+                <div className='w-full lg:w-1/2'data-aos="fade-right" data-aos-easing="ease-in-sine"> 
+                <img src={img1} alt="" /> </div>
+                <div className='w-full lg:w-1/2'data-aos="fade-left" data-aos-easing="ease-in-sine">
                     <h1 className='font-lato text-5xl tracking-wider font-semibold my-5'>
                         OUR MENUS
                     </h1>
@@ -30,8 +35,11 @@ const ThreeCards = () => {
             
 
             <div className='flex flex-col-reverse mx-1 lg:flex-row-reverse items-center mt-14 gap-5 lg:gap-10 text-center lg:text-left'>
-                <div className='w-full lg:w-1/2'> <img src={img2} alt="" /> </div>
-                <div className='w-full lg:w-1/2'>
+                <div data-aos="fade-right"
+            data-aos-easing="ease-in-sine" className='w-full lg:w-1/2'> 
+                <img src={img2} alt="" /> </div>
+                <div data-aos="fade-left"
+            data-aos-easing="ease-in-sine" className='w-full lg:w-1/2'>
                     <h1 className='font-lato text-5xl tracking-wider font-semibold my-5'>
                         OUR SERVICE
                     </h1>
@@ -50,8 +58,10 @@ const ThreeCards = () => {
 
             
             <div className='flex flex-col-reverse mx-1 lg:flex-row items-center mt-14 gap-5 lg:gap-10 text-center lg:text-left'>
-                <div className='w-full lg:w-1/2'> <img src={img3} alt="" /> </div>
-                <div className='w-full lg:w-1/2'>
+                <div className='w-full lg:w-1/2' data-aos="fade-left"
+            data-aos-easing="ease-in-sine"> <img src={img3} alt="" /> </div>
+                <div className='w-full lg:w-1/2' data-aos="fade-right"
+            data-aos-easing="ease-in-sine">
                     <h1 className='font-lato text-5xl tracking-wider font-semibold my-5'>
                         OUR COMMITMENT
                     </h1>

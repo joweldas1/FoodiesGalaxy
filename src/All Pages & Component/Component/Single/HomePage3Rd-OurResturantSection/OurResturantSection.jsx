@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import imgRes from "../../../../assets/ourResturant/SRterrace.jpg"
 import { Link } from 'react-router-dom';
+import useAOS from '../../../../../useAOS';
 
 const OurResturantSection = () => {
+    useEffect(()=>{
+        useAOS()
+    },[])
     return (
         <div className='w-full  bg-[#081229] rounded-xl my-10 py-3 lg:py-16'>
                 <div className='lg:h-screen'>
@@ -10,11 +14,13 @@ const OurResturantSection = () => {
                         QUALITY & <br className='lg:hidden' /> DELICIOUS  FOOD <br className='lg:hidden' />  WITH SPECTACULAR ENVIRONMENT VIEWS</h1>
 
                 <div className='lg:py-10 flex  flex-col-reverse lg:flex-row mx-2 text-center lg:text-left lg:mx-20 gap-5 lg:gap-10 justify-center  '>
-                    <div className='lg:w-full mx-5 lg:mx-0 mb-4 lg:mb-0'>
+                    <div
+                    data-aos="fade-right" data-aos-anchor-placement="fade-center" 
+                    className='lg:w-full mx-5 lg:mx-0 mb-4 lg:mb-0'>
                     <img className='w-full rounded-lg h-[50vh] lg:h-[80vh]' src={imgRes} alt="" />
 
                     </div>
-                    <div className='w-full font-lato text-slate-300 my-5 ' >
+                    <div className='w-full font-lato text-slate-300 my-5 ' data-aos="fade-left" data-aos-anchor-placement="fade-center" >
                         <p className='font-semibold text-lg '>
                             Boasting uninterrupted views of Brighton seafront and the iconic West Pier ruins, The Salt Room is a modern British seafood restaurant that celebrates cooking over coal. </p>
 

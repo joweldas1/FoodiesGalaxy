@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from "react-hook-form"
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -39,6 +40,7 @@ const ResturantFoodUpload = () => {
     console.log(selectCategory);
     return (
         <div className='pt-16'>
+            <Helmet><title>FoodiesGalaxy | Restaurant items upload form</title></Helmet>
         <div className="w-full p-3 lg:max-w-4xl mx-auto  rounded-lg shadow-md bg-[rgba(255,160,0)] ">
         <h2 className="p-1 text-center text-2xl font-semibold text-gray-700 capitalize dark:text-white">Uploads Today's Items</h2>
     
