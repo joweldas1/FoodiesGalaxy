@@ -44,6 +44,13 @@ const SingleFoodDetails = () => {
 
 
     const handlePlaceOrder = async () =>{
+        if(quantity<=0){toast.error("Oppos, Select valid Quantity ",{style:{backgroundColor:"rgba(255,165,0)",border:"red",border:"2px solid red", color:"white"}})
+            return}
+        if(quantity>20){toast.error("you can not select more than 20 items  ",{style:{backgroundColor:"rgba(255,165,0)",border:"red",border:"2px solid red", color:"white"}})
+            return}
+
+
+
         const orderedData = {
             email,
             displayName,
@@ -91,12 +98,13 @@ const SingleFoodDetails = () => {
             <p><span className='text-lg font-bold font-lato'>Country</span> : {singleData?.origin}</p>
             <p><span className='text-lg font-bold font-lato'>Ingredient : </span>{singleData?.ingredients}</p>
                 
-            <p className='font-bold'><span className='text-lg font-bold font-lato'>Total sell : </span >  {singleData? singleData?.totalSell : "0"}       Pcs</p>
+            <p className='font-bold'><span className='text-lg font-bold font-lato'>Total sell : </span >  {singleData? singleData?.totalSell : 0}   Pcs</p>
             <p className='font-bold'><span className='text-lg font-bold font-lato'>Price : </span >{singleData?.price}/-</p>
             <div className='flex  mb-5'>
-            <p className='text-lg font-bold font-lato'>Quantity : </p> <input onChange={e=>setQty(e.target.value)} className=' border hover:border-2 border-blue-800 rounded-md ml-3 w-11 ' name='quantity'  type="number" required />
+            <p className='text-lg font-bold font-lato'>Quantity : </p> <input onChange={e=>setQty(e.target.value)} className=' border text-center font-semibold hover:border-2 border-blue-800 rounded-md ml-3 w-11 ' name='quantity'  type="number" required />
             </div>
-            <button className='btn btn-primary' onClick={handlePlaceOrder} >Place Order</button>
+            <button className='btn bg-[rgba(255,165,0)] border hover:bg-[black] hover:border-4 hover:border-[rgba(255,165,0)] border-black text-blue-800 text-xl ' 
+            onClick={handlePlaceOrder} >Place Order</button>
         </div>  
       </div>
       </>

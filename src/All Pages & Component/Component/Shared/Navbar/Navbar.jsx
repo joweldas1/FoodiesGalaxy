@@ -51,8 +51,8 @@ const Navbar = () => {
     <li className='lg:hidden'> <NavLink to='/foodTours'> Foodies Tour </NavLink> </li>
     <li><NavLink to='/ourService'>Cook Room</NavLink></li>
     <li><NavLink to='/allOrdered'>Order Collection</NavLink></li>
-    <p className='text-center'>User : {userName}</p>
-    <li><button onClick={handleLogOut} className="btn">Logout</button></li>
+    <p className='text-center text-white'>User : {userName}</p>
+    <li><button  onClick={handleLogOut} className="btn btn-sm">Logout</button></li>
     </>
 
     const navTwo = <>
@@ -86,7 +86,7 @@ const Navbar = () => {
          
 
          {
-          show?<ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 text-center rounded-box w-52">
+          show?<ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-black text-center rounded-box w-52">
             {nav}
           </ul>:''
          }

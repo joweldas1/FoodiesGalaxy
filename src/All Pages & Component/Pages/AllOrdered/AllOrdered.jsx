@@ -1,9 +1,14 @@
 import axios, { all } from 'axios';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import UseAuth from '../../Hooks/UseAuth';
 
 const AllOrdered = () => {
     const [allOrder,setAllOrder] = useState([])
+    const {user}=UseAuth()
+    const userEmail = user?.email
+
+    console.log(user.email);
 
     useEffect(()=>{
       getData()
@@ -17,7 +22,14 @@ const AllOrdered = () => {
 
 
   
-    const handleCookingAndCancel =async (id,prevStatus,status) =>{
+    const handleCookingAndCancel =async (id,prevStatus,status,email,userEmail) =>{
+      if(email===userEmail) {
+         toast.error("You have not permission to Any action here",{style:{backgroundColor:"rgba(255,165,0)",border:"red",border:"2px solid red"}})
+         return
+      }
+
+
+      console.log(userEmail);
       const {data} = await axios.patch(`${import.meta.env.VITE_API_URL}/updateStatus/${id}`,{status})
       console.log(data);
       if(data.modifiedCount>0){
@@ -67,9 +79,9 @@ const AllOrdered = () => {
         <td>{p.prices * p.quantity} </td>
         <td>
           <p className={` text-xs p-1 rounded-xl text-center h-7 bg-opacity-80 text-opacity-100
-          ${p.status==="confirmed" && 'text-white bg-blue-800' }
-          ${p.status==="cancel" && 'text-white bg-red-600' }
-          ${p.status==="cooking" && 'text-white bg-green-600' }
+          ${p.status==="confirmed" && 'text-blue-800 font-semibold  bg-blue-200 backdrop-blur-2xl bg-opacity-85 bg-blend-saturation' }
+          ${p.status==="cancel" && ' font-semibold text-red-800 bg-red-100' }
+          ${p.status==="cooking" && 'text-[rgba(255,165,0)] bg-green-100' }
           `}>
           {p.status}
           </p>
@@ -79,13 +91,13 @@ const AllOrdered = () => {
       
        
         {
-         p.status==="pending" && <button onClick={()=>handleCookingAndCancel(p._id,p.status,"cancel")} className='bg-red-500 text-white p-1 rounded-lg text-sm'>Cancel</button> 
+         p.status==="pending" && <button onClick={()=>handleCookingAndCancel(p._id,p.status,"cancel",p.email,userEmail)} className='bg-red-500 text-white p-1 rounded-lg text-sm'>Cancel</button> 
         }
          {
-          p.status!=="cancel" && p.status!=="cooking"&& p.status!=="confirmed" ?<button onClick={()=>handleCookingAndCancel(p._id,p.status,"cooking")} className='bg-lime-500 text-white p-1 rounded-lg text-sm'>Cooking</button> :""
+          p.status!=="cancel" && p.status!=="cooking"&& p.status!=="confirmed" ?<button onClick={()=>handleCookingAndCancel(p._id,p.status,"cooking",p.email,userEmail)} className='bg-lime-500 text-white p-1 rounded-lg text-sm'>Cooking</button> :""
         }
         {
-          p.status==="cooking"&&<button onClick={()=>handleCookingAndCancel(p._id,p.status,"confirmed")} className='bg-blue-500 text-white p-1 rounded-lg text-sm'>Cooking Finish</button>
+          p.status==="cooking"&&<button onClick={()=>handleCookingAndCancel(p._id,p.status,"confirmed",p.email,userEmail)} className='bg-blue-500 text-white p-1 rounded-lg text-sm'>Cooking Finish</button>
         }
         {
           p.status==="confirmed"&& <p className='text-sm ' >Ordered Completed</p>||p.status==="cancel" && <p className='text-sm ' >Ordered Cancel</p>

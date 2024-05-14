@@ -52,7 +52,7 @@
 
   
   .orangeGlossy{
-    color:rgba(255, 165, 0);
+    color:rgba(255,165,0);
   }
 .orangeGlossyBg{
     background: rgba(255,160,0);
@@ -140,3 +140,6 @@
     width: 100%;
   }
 
+  .errorToasty{
+    background-color: red;
+  }
