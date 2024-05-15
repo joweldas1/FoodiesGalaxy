@@ -14,7 +14,7 @@ const ResturantHomeShow = () => {
   
     useEffect(()=>{
         // axios.get(`${import.meta.env.VITE_API_URL}/all-food`,{withCredentials:true})
-        axiosUrl.get('/all-food')
+        axios.get(`${import.meta.env.VITE_API_URL}/all-food`)
         .then(data=>{setHomeData(data?.data)})
         .catch(err=>console.log(err)) 
     },[])

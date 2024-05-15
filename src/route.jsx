@@ -15,6 +15,7 @@ import UserCreatePost from "./All Pages & Component/Pages/UserCreatePost/UserCre
 import FoodiesTour from "./All Pages & Component/Pages/ShowUserPost/FoodiesTour";
 import UserPersonalUploadDataShow from "./All Pages & Component/Pages/UserPersonalUploadDataShow/UserPersonalUploadDataShow";
 import UserUploadDataUpdate from "./All Pages & Component/Pages/UserPersonalUploadDataShow/UserUploadDataUpdate";
+import ResUpload from "./All Pages & Component/Pages/ResUpload/ResUpload";
 
   const router = createBrowserRouter([
     {
@@ -74,6 +75,13 @@ import UserUploadDataUpdate from "./All Pages & Component/Pages/UserPersonalUplo
                 path:'/update-user-post/:id',
                 element:<PrivateRoute><UserUploadDataUpdate/></PrivateRoute>,
                 loader:({params})=>fetch(`${import.meta.env.VITE_API_URL}/update-user-post/${params.id}`)
+            }
+            ,
+            {
+                path:"/updateResUpload/:id",
+                element:<PrivateRoute> <ResUpload/> </PrivateRoute>,
+                loader:({params})=>fetch(`${import.meta.env.VITE_API_URL}/food-details/${params.id}`)
+                
             }
         ]
     }

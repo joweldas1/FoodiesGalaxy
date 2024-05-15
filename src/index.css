@@ -151,3 +151,31 @@ body[data-aos-duration='4000'] [data-aos],
   .errorToasty{
     background-color: red;
   }
+
+    .loginF{
+      position: relative; /* Ensure content stays above the background */
+  z-index: 10     
+      
+
+    }
+.loginContainer{
+  
+  background: linear-gradient(to bottom right, #333333, rgba(255, 165, 0, 1));
+    backdrop-filter: blur(30px);
+    color: white ;
+    text-align: center;
+    
+}
+
+.loginContainerBefore{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('your-background-image.jpg'); /* Replace 'your-background-image.jpg' with the path to your background image */
+  background-size: cover;
+  filter: blur(10px); /* Adjust the blur intensity as needed */
+  z-index: -1
+}

@@ -34,8 +34,8 @@ const Navbar = () => {
     window.addEventListener("scroll",()=>{
       const nav= document.getElementById('nav')
       if(window.scrollY>50){
-        nav.classList.add('hiddenNav')
-      }else nav.classList.remove("hiddenNav")
+        nav?.classList.add('hiddenNav')
+      }else nav?.classList.remove("hiddenNav")
          
     })
 

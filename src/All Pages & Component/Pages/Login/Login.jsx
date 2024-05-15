@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaEye ,FaEyeSlash} from "react-icons/fa";
 import { Helmet } from 'react-helmet-async';
-
+import img1 from '../../../assets/slider/1.jpg'
 
 
 const Login = () => {
@@ -56,13 +56,14 @@ const Login = () => {
 
     return (
       
-        <div className="hero min-h-screen bg-base-200">
+        <div className="loginContainer hero min-h-screen ">
           <Helmet><title>FoodiesGalaxy | User login form</title></Helmet>
 
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Login now!</h1>
-            <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+       <div className='loginF'>
+       <div className="hero-content w-full flex-col lg:flex-row-reverse">
+          <div className="text-center ">
+            <h1 className="text-5xl font-bold lg:whitespace-nowrap my-4  ">Login now!</h1>
+         
 
             <div>
             <button onClick={handleGoogleLogin} type="button" className="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 me-2 mb-2">
@@ -118,6 +119,7 @@ const Login = () => {
             </form>
           </div>
         </div>
+       </div>
       </div>
     );
 };

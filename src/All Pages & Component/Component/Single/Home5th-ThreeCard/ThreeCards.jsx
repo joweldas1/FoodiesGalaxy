@@ -35,10 +35,10 @@ const ThreeCards = () => {
             
 
             <div className='flex flex-col-reverse mx-1 lg:flex-row-reverse items-center mt-14 gap-5 lg:gap-10 text-center lg:text-left'>
-                <div data-aos="fade-right"
+                <div data-aos="fade-left"
             data-aos-easing="ease-in-sine" className='w-full lg:w-1/2'> 
                 <img src={img2} alt="" /> </div>
-                <div data-aos="fade-left"
+                <div data-aos="fade-right"
             data-aos-easing="ease-in-sine" className='w-full lg:w-1/2'>
                     <h1 className='font-lato text-5xl tracking-wider font-semibold my-5'>
                         OUR SERVICE
@@ -58,9 +58,9 @@ const ThreeCards = () => {
 
             
             <div className='flex flex-col-reverse mx-1 lg:flex-row items-center mt-14 gap-5 lg:gap-10 text-center lg:text-left'>
+                <div className='w-full   lg:w-1/2' data-aos="fade-right"
+            data-aos-easing="ease-in-sine "> <img src={img3} alt="" /> </div>
                 <div className='w-full lg:w-1/2' data-aos="fade-left"
-            data-aos-easing="ease-in-sine"> <img src={img3} alt="" /> </div>
-                <div className='w-full lg:w-1/2' data-aos="fade-right"
             data-aos-easing="ease-in-sine">
                     <h1 className='font-lato text-5xl tracking-wider font-semibold my-5'>
                         OUR COMMITMENT

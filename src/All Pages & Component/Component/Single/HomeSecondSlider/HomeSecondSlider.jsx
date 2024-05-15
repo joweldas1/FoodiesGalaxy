@@ -27,8 +27,7 @@ useEffect(()=>{
 
     return (
         
-        <div data-aos="fade-up"
-        data-aos-anchor-placement="bottom-bottom" className='lg:my-10 text-sm font-semibold w-full py-10 mx-auto bg-[#081229]'>
+        <div className='lg:my-10 text-sm font-semibold w-full py-10 mx-auto bg-[#081229]'>
                             <p className='text-center text-[rgba(255,165,0)]'><span >HOME</span> | <span>All Post</span></p>
 
             

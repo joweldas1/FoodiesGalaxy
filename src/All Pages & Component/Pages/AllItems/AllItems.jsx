@@ -3,53 +3,64 @@ import React, { useEffect, useState } from 'react';
 import AllItemsCard from './AllItemsCard';
 import HeadingAndTitle from '../../Component/Shared/HeadingAndTitle/HeadingAndTitle';
 import { Helmet } from 'react-helmet-async';
+import UseAuth from '../../Hooks/UseAuth';
 
 const   AllItems = () => {
     const [items,setItems] = useState([])
     const [selectCategory,setSelectCategory] = useState('')
-    const [setPriceFilter,selectPriceFilter] = useState('')
-    const [sellQtyWise,setSellQtyWise] = useState('')
+    const [priceFilter,setSelectPriceFilter] = useState(0)
+    const [sellQtyWise,setSellQtyWise] = useState(0)
     const [selectSearch,setSelectSearch] = useState('')
     const [currentPage,setCurrentPage] = useState(1)
     const [itemsPerPage,setItemsPerPage] = useState(8)
     const [count,setCount] = useState(0)
 
+
+    const {loading}=UseAuth()
+    if(loading){ <><div className='w-full h-full mx-auto text-center'><span className="loading loading-spinner loading-lg"></span></div></>}
+
     const handleReset=()=>{
         setSelectCategory('')
-        selectPriceFilter('')
+        setSelectPriceFilter('')
         setSellQtyWise('')
         setSelectSearch('')
     }
 
-    
-    const getData=()=>{
-      axios.get(`${import.meta.env.VITE_API_URL}/todaysMeal?category=${selectCategory}&price=${setPriceFilter}&search=${selectSearch}&sell=${sellQtyWise}&page=${currentPage}&size=${itemsPerPage}`)
+
+    useEffect(()=>{
+      getData()  
+      getPagi()    
+    },[selectCategory,priceFilter,sellQtyWise,selectSearch])
+
+
+    const getData=async()=>{
+
+      await axios.get(`${import.meta.env.VITE_API_URL}/todaysMeal?category=${selectCategory}&price=${priceFilter}&sell=${sellQtyWise}&search=${selectSearch}&page=${currentPage}&size=${itemsPerPage}`)
       .then(res=>setItems(res.data))
       .catch(err=>console.log(err))
+
     }
 
-    useEffect(()=>{
-      getData()      
-    },[selectCategory , setPriceFilter ,selectSearch , sellQtyWise])
-
-    useEffect(()=>{
-       axios.get(`${import.meta.env.VITE_API_URL}/count?category=${selectCategory}&sort=${setPriceFilter}&search=${selectSearch}&sell=${sellQtyWise}&page=${currentPage}&size=${itemsPerPage}`)
+    const getPagi=()=>{
+      axios.get(`${import.meta.env.VITE_API_URL}/count?category=${selectCategory}&search=${selectSearch}`)
       .then(res=> {console.log(res); setCount(res.data.data)})
       .catch(err=>console.log(err))
-    },[selectCategory,setPriceFilter,selectSearch,sellQtyWise])
+    }
+    
+  
+    
 
-    const numberOfPages = Math.ceil(count/itemsPerPage);
-    const pages = [...Array(numberOfPages).keys()].map(idx=>idx+1)
+
+
+  const numberOfPages = Math.ceil(count/itemsPerPage,1);
+//const numberOfPages=10
+  const pages = [...Array(numberOfPages).keys()].map(idx=>idx+1  )
 
     const handlePagination = (value) =>{
         setCurrentPage(value)
         getData()
       
     }
-
-
-
-
 
       
 
@@ -68,7 +79,7 @@ const   AllItems = () => {
 
     return (
         <div className='pt-16'>
-          <Helmet><title>FoodiesGalaxy | All Items</title></Helmet>
+          <Helmet><title>FoodiesGalaxy | All Items  </title></Helmet>
             <HeadingAndTitle heading={heading} title={title} />
 
             <div className='mx-2'>
@@ -81,7 +92,7 @@ const   AllItems = () => {
                 <option value="dinner">Dinner</option>
               </select>
 
-              <select className='btn btn-sm hidden md:block btn-primary bg-[rgba(65,131,215)] text-white hover:bg-[rgba(58, 83, 155)]' name="" id="" value={setPriceFilter} onChange={(e)=>selectPriceFilter(e.target.value)}>
+              <select className='btn btn-sm hidden md:block btn-primary bg-[rgba(65,131,215)] text-white hover:bg-[rgba(58, 83, 155)]' name="" id="" value={priceFilter} onChange={(e)=>setSelectPriceFilter(e.target.value)}>
                 <option value="">Price</option>
                 <option value="dsc">High to Low</option>
                 <option value="asc">Low to High</option>

@@ -18,7 +18,7 @@ const UseAxios = () =>{
         (res)  => res,
         async (err) =>{
             console.log(err);
-        if(err.response.status===401 || err.response.status===403){
+        if(err?.response?.status===401 || err?.response?.status===403){
             try {
                 // await logOut()
                 console.log("user logout due to handle access");

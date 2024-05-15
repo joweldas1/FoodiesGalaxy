@@ -15,8 +15,11 @@ const SingleFoodDetails = () => {
     const [sellCount,setSellCount] = useState()
     const [qty,setQty] = useState(0)
     const navigate = useNavigate()
-    console.log(singleData);
 
+    const currentRemain = singleData?.remain;
+
+    if(currentRemain<=0)return toast.error("Please wait when quantity will available soon")
+    console.log(currentRemain);
 
     const {id } = useParams()
     const {user}= UseAuth()
@@ -42,7 +45,16 @@ const SingleFoodDetails = () => {
     const countOrder=async()=>{
         const prevCount = singleData.totalSell
         const totalCount = prevCount + quantity
-        const res = await axios.patch(`${import.meta.env.VITE_API_URL}/updatePurchase/${id}`,{totalSell:totalCount})
+
+        const newRemain=currentRemain-qty;
+
+        
+
+
+
+        const res = await axios.patch(`${import.meta.env.VITE_API_URL}/updatePurchase/${id}`,{totalSell:totalCount,
+         remain: newRemain 
+        })
         console.log('res--',res);
     }
 
@@ -79,7 +91,6 @@ const SingleFoodDetails = () => {
         }
        
     }
-    console.log(qty,singleData);
 
     
 
@@ -105,6 +116,7 @@ const SingleFoodDetails = () => {
                 
             <p className='font-bold'><span className='text-lg font-bold font-lato'>Total sell : </span >  {singleData? singleData?.totalSell : 0}   Pcs</p>
             <p className='font-bold'><span className='text-lg font-bold font-lato'>Price : </span >{singleData?.price}/-</p>
+            <p className='font-bold'><span className='text-lg font-bold font-lato'>Remain Qty : </span >{singleData?.remain} pcs</p>
             <div className='flex  mb-5'>
             <p className='text-lg font-bold font-lato'>Quantity : </p> <input onChange={e=>setQty(e.target.value)} className=' border text-center font-semibold hover:border-2 border-blue-800 rounded-md ml-3 w-11 ' name='quantity'  type="number" required />
             </div>

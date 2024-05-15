@@ -38,10 +38,10 @@ const Register = () => {
 
 
     return (
-        <div className="hero min-h-screen bg-base-200">
+        <div className="hero loginContainer min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Register Now</h1>
+          <div className="text-center ">
+            <h1 className="text-5xl whitespace-nowrap font-bold">Register Now</h1>
             
           </div>
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -103,7 +103,7 @@ const Register = () => {
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Register</button>
               </div>
-              <h2 className='text-center py-2'>Already Have an account ,Please <Link to='/login' className='text-blue-600 font-bold'> Login</Link> </h2>
+              <h2 className='text-center text-black py-2'>Already Have an account ,Please <Link to='/login' className='text-blue-600 font-bold'> Login</Link> </h2>
 
             </form>
           </div>
