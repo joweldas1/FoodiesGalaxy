@@ -56,7 +56,7 @@ const Login = () => {
 
     return (
       
-        <div className="loginContainer hero min-h-screen ">
+        <div className="loginContainer hero min-h-screen text-black">
           <Helmet><title>FoodiesGalaxy | User login form</title></Helmet>
 
        <div className='loginF'>
@@ -80,11 +80,11 @@ const Login = () => {
             <form onSubmit={handleOnSubmit} className="card-body">
 
 
-              <div className="form-control">
+              <div className="form-control text-black">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
-                <input type="email" name='email' placeholder="email" className="input input-bordered" required />
+                <input type="email" name='email' placeholder="email" className="input text-black input-bordered" required />
               </div>
 
 
@@ -93,7 +93,7 @@ const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                <div className='relative'>
-               <input type={visible?"password":"text"} name='password' placeholder="password" className="input input-bordered w-full" required  /> 
+               <input type={visible?"password":"text"} name='password' placeholder="password" className="input text-black input-bordered w-full" required  /> 
            <div onClick={()=>setVisible(!visible)}>
            {
                 visible?<FaEyeSlash  className='absolute top-4 right-2'></FaEyeSlash>:
